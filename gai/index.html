@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liquid Glass v2 Test</title>
+
+    <!-- Link Your CSS -->
+    <link rel="stylesheet" href="liquid.css" />
+
+    <style>
+      body {
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .section {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .spacer {
+        height: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🌊 Liquid Glass v2 Test</h1>
+
+    <!-- Theme Controls -->
+    <div class="section">
+      <h2>Theme Toggle</h2>
+      <div class="row">
+        <button onclick="setTheme('auto')">Auto</button>
+        <button onclick="setTheme('light')">Light</button>
+        <button onclick="setTheme('dark')">Dark</button>
+      </div>
+    </div>
+
+    <!-- Glass Container -->
+    <div class="section">
+      <h2>Glass Surface</h2>
+      <p>This is a glass container using <strong>.glass</strong>.</p>
+      <button>Glass Button</button>
+    </div>
+
+    <!-- Buttons -->
+    <div class="glass section">
+      <h2>Buttons</h2>
+      <div class="row">
+        <button>Default</button>
+        <button disabled>Disabled</button>
+      </div>
+    </div>
+
+    <!-- Inputs -->
+    <div class="section">
+      <h2>Text Inputs</h2>
+      <div class="row">
+        <input type="text" placeholder="Text input" />
+        <input type="email" placeholder="Email input" />
+        <input type="password" placeholder="Password input" />
+        <input type="number" placeholder="Number input" />
+      </div>
+
+      <div class="row">
+        <input type="date" />
+        <input type="color" style="width: 100px; height: 100px; padding: 0; margin: 0;" />
+        <input type="range" />
+      </div>
+    </div>
+
+    <!-- Checkbox & Radio -->
+    <div class="section">
+      <h2>Checkbox & Radio</h2>
+      <div class="row">
+        <label>
+          <input type="checkbox" />
+          Checkbox
+        </label>
+
+        <label>
+          <input type="radio" name="r" />
+          Radio 1
+        </label>
+
+        <label>
+          <input type="radio" name="r" />
+          Radio 2
+        </label>
+      </div>
+    </div>
+
+    <!-- Textarea & Select -->
+    <div class="glass section">
+      <h2>Textarea & Select</h2>
+      <textarea placeholder="Textarea"></textarea>
+
+      <select>
+        <option>Option One</option>
+        <option>Option Two</option>
+        <option>Option Three</option>
+      </select>
+    </div>
+
+    <!-- Fieldset -->
+    <div class="glass section">
+      <fieldset>
+        <legend>Fieldset Example</legend>
+        <input type="text" placeholder="Inside fieldset" />
+      </fieldset>
+    </div>
+
+    <!-- Progress & Meter -->
+    <div class="glass section">
+      <h2>Progress & Meter</h2>
+      <progress value="60" max="100"></progress>
+      <meter value="0.6"></meter>
+    </div>
+
+    <!-- Details -->
+    <div class="glass section">
+      <details>
+        <summary>Open Details</summary>
+        <p>This is inside a details component.</p>
+      </details>
+    </div>
+
+    <!-- Dialog -->
+    <div class="glass section">
+      <h2>Dialog</h2>
+      <button onclick="openDialog()">Open Dialog</button>
+      <dialog id="testDialog">
+        <p>This is a glass dialog.</p>
+        <button onclick="closeDialog()">Close</button>
+      </dialog>
+    </div>
+
+    <!-- Links -->
+    <div class="glass section">
+      <h2>Links</h2>
+      <a href="#">This is a link</a>
+    </div>
+
+    <!-- Media -->
+    <div class="glass section">
+      <h2>Media Elements</h2>
+      <iframe src="https://example.com" width="300" height="150"></iframe>
+      <canvas width="200" height="100"></canvas>
+      <video controls width="300">
+        <source src="" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="spacer"></div>
+
+    <script>
+      function setTheme(mode) {
+        if (mode === "auto") {
+          const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+          if (prefersDark) {
+            document.documentElement.setAttribute("data-theme", "dark");
+          } else {
+            document.documentElement.setAttribute("data-theme", "light");
+          }
+        } else if (mode == "light") {
+          document.documentElement.setAttribute("data-theme", "light");
+        } else if (mode == "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+
+      }
+
+      function openDialog() {
+        document.getElementById("testDialog").showModal();
+      }
+
+      function closeDialog() {
+        document.getElementById("testDialog").close();
+      }
+    </script>
+  </body>
+</html>

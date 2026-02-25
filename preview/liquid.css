@@ -4,7 +4,7 @@
    ========================================================= */
 
 /* =========================================================
-   1️⃣ LIGHT THEME TOKENS
+   Universal TOKENS
    ========================================================= */
 :root {
   --lg-radius-xs: 5px;
@@ -15,6 +15,22 @@
   --lg-radius-default: var(--lg-radius-md);
 
   --lg-blur-strength: blur(10px);
+  --lg-saturate: saturate(160%);
+}
+
+/* =========================================================
+   1️⃣ LIGHT THEME TOKENS
+   ========================================================= */
+:root {
+  --lg-radius-xs: 5px;
+  --lg-radius-sm: 7px;
+  --lg-radius-md: 10px;
+  --lg-radius-lg: 15px;
+  --lg-radius-xl: 25px;
+  --lg-radius-default: var(--lg-radius-md);
+
+  /* 🔥 Increased blur & saturation for that true liquid distortion */
+  --lg-blur-strength: blur(16px);
   --lg-saturate: saturate(180%);
 }
 
@@ -26,28 +42,30 @@
     radial-gradient(circle at 80% 70%, #c2e9fb, transparent 50%),
     linear-gradient(135deg, #fdfbfb, #ebedee);
 
-  --lg-surface-bg: rgba(255, 255, 255, 0.25);
-  --lg-surface-bg-hover: rgba(255, 255, 255, 0.7);
-  --lg-surface-bg-active: rgba(255, 255, 255, 0.9);
+  /* 🔥 Lowered BG opacity to see the colors, increased borders for reflections */
+  --lg-surface-bg: rgba(255, 255, 255, 0.15);
+  --lg-surface-bg-hover: rgba(255, 255, 255, 0.25);
+  --lg-surface-bg-active: rgba(255, 255, 255, 0.35);
 
-  --lg-control-bg: rgba(255, 255, 255, 0.65);
+  --lg-control-bg: rgba(255, 255, 255, 0.4);
 
-  --lg-surface-border: rgba(255, 255, 255, 0.9);
-  --lg-surface-border-hover: rgba(255, 255, 255, 0.6);
+  --lg-surface-border: rgba(255, 255, 255, 0.4);
+  --lg-surface-border-hover: rgba(255, 255, 255, 0.7);
   --lg-surface-border-focus: rgba(0, 122, 255, 0.8);
 
   --lg-text-primary: rgba(0, 0, 0, 0.85);
-  --lg-text-secondary: rgba(0, 0, 0, 0.6);
-  --lg-text-placeholder: rgba(0, 0, 0, 0.4);
+  --lg-text-secondary: rgba(0, 0, 0, 0.65);
+  --lg-text-placeholder: rgba(0, 0, 0, 0.5);
   --lg-text-link: rgba(0, 122, 255, 0.9);
 
   --lg-accent: rgba(0, 122, 255, 0.9);
 
   --lg-backdrop: var(--lg-blur-strength) var(--lg-saturate);
 
-  --lg-elevation-1: 0 4px 20px rgba(0, 0, 0, 0.12);
-  --lg-elevation-2: 0 8px 32px rgba(0, 0, 0, 0.15);
-  --lg-elevation-3: 0 16px 48px rgba(0, 0, 0, 0.2);
+  /* 🔥 Tinted the shadows with a deep blue to mimic light passing through water/glass */
+  --lg-elevation-1: 0 4px 30px rgba(31, 38, 135, 0.07);
+  --lg-elevation-2: 0 8px 32px rgba(31, 38, 135, 0.12);
+  --lg-elevation-3: 0 16px 48px rgba(31, 38, 135, 0.18);
 
   --lg-focus-ring: 0 0 0 1px var(--lg-surface-border-focus);
 }
@@ -64,14 +82,16 @@
     radial-gradient(circle at 80% 70%, #2a5298, transparent 50%),
     linear-gradient(135deg, #0f2027, #203a43, #2c5364);
 
-  --lg-surface-bg: rgba(30, 30, 30, 0.55);
-  --lg-surface-bg-hover: rgba(40, 40, 40, 0.65);
-  --lg-surface-bg-active: rgba(50, 50, 50, 0.75);
+  /* 🔥 Deeper, inkier transparent backgrounds for dark mode */
+  --lg-surface-bg: rgba(16, 18, 27, 0.35);
+  --lg-surface-bg-hover: rgba(16, 18, 27, 0.45);
+  --lg-surface-bg-active: rgba(16, 18, 27, 0.55);
 
-  --lg-control-bg: rgba(40, 40, 40, 0.65);
+  --lg-control-bg: rgba(16, 18, 27, 0.5);
 
-  --lg-surface-border: rgba(255, 255, 255, 0.1);
-  --lg-surface-border-hover: rgba(255, 255, 255, 0.2);
+  /* 🔥 Kept the white border relatively bright so the edges "catch" the light */
+  --lg-surface-border: rgba(255, 255, 255, 0.15);
+  --lg-surface-border-hover: rgba(255, 255, 255, 0.25);
   --lg-surface-border-focus: rgba(10, 132, 255, 0.9);
 
   --lg-text-primary: rgba(255, 255, 255, 0.9);
@@ -83,9 +103,10 @@
 
   --lg-backdrop: var(--lg-blur-strength) var(--lg-saturate);
 
-  --lg-elevation-1: 0 4px 20px rgba(0, 0, 0, 0.5);
-  --lg-elevation-2: 0 8px 32px rgba(0, 0, 0, 0.6);
-  --lg-elevation-3: 0 16px 48px rgba(0, 0, 0, 0.75);
+  /* 🔥 Wider, softer shadows to lift the glass off the dark background */
+  --lg-elevation-1: 0 4px 30px rgba(0, 0, 0, 0.4);
+  --lg-elevation-2: 0 8px 32px rgba(0, 0, 0, 0.55);
+  --lg-elevation-3: 0 16px 48px rgba(0, 0, 0, 0.7);
 
   --lg-focus-ring: 0 0 0 1px var(--lg-surface-border-focus);
 }

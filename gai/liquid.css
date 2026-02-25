@@ -1,0 +1,350 @@
+/* =========================================================
+   LIQUID GLASS — REACT CONTROLLED VERSION
+   React controls: data-theme="light" | "dark"
+   ========================================================= */
+
+/* =========================================================
+   1️⃣ LIGHT THEME TOKENS
+   ========================================================= */
+:root {
+  --lg-radius-xs: 6px;
+  --lg-radius-sm: 10px;
+  --lg-radius-md: 16px;
+  --lg-radius-lg: 24px;
+  --lg-radius-xl: 32px;
+  --lg-radius-default: var(--lg-radius-md);
+
+  /* Fluid "Liquid" Easing */
+  --lg-transition: 300ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  
+  --lg-blur-strength: blur(16px);
+  --lg-saturate: saturate(180%);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg-gradient:
+    radial-gradient(circle at 10% 20%, #e0c3fc 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, #8ec5fc 0%, transparent 40%),
+    linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+
+  --lg-surface-bg: rgba(255, 255, 255, 0.4);
+  --lg-surface-bg-hover: rgba(255, 255, 255, 0.55);
+  --lg-surface-bg-active: rgba(255, 255, 255, 0.7);
+
+  --lg-control-bg: rgba(255, 255, 255, 0.5);
+
+  --lg-surface-border: rgba(255, 255, 255, 0.4);
+  --lg-surface-border-hover: rgba(255, 255, 255, 0.8);
+  --lg-surface-border-focus: rgba(0, 122, 255, 0.6);
+
+  /* Edge Lighting (The "Glass" edge reflection) */
+  --lg-edge-highlight: inset 0 1px 1px rgba(255, 255, 255, 0.8), 
+                       inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+  
+  /* Diagonal Shine */
+  --lg-shine: linear-gradient(105deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 40%);
+
+  --lg-text-primary: rgba(10, 10, 10, 0.9);
+  --lg-text-secondary: rgba(10, 10, 10, 0.65);
+  --lg-text-placeholder: rgba(10, 10, 10, 0.4);
+  --lg-text-link: rgba(0, 112, 243, 1);
+
+  --lg-accent: rgba(0, 122, 255, 0.9);
+
+  --lg-backdrop: var(--lg-blur-strength) var(--lg-saturate);
+
+  --lg-elevation-1: 0 4px 16px rgba(0, 0, 0, 0.04);
+  --lg-elevation-2: 0 10px 32px rgba(0, 0, 0, 0.08);
+  --lg-elevation-3: 0 20px 48px rgba(0, 0, 0, 0.12);
+
+  --lg-focus-ring: 0 0 0 3px rgba(0, 122, 255, 0.3);
+}
+
+/* =========================================================
+   2️⃣ DARK THEME TOKENS
+   ========================================================= */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg-gradient:
+    radial-gradient(circle at 15% 30%, #1e3c72 0%, transparent 50%),
+    radial-gradient(circle at 85% 70%, #2a5298 0%, transparent 50%),
+    linear-gradient(135deg, #090a0f 0%, #101520 100%);
+
+  --lg-surface-bg: rgba(20, 25, 35, 0.45);
+  --lg-surface-bg-hover: rgba(30, 35, 45, 0.55);
+  --lg-surface-bg-active: rgba(40, 45, 55, 0.65);
+
+  --lg-control-bg: rgba(20, 25, 35, 0.5);
+
+  --lg-surface-border: rgba(255, 255, 255, 0.08);
+  --lg-surface-border-hover: rgba(255, 255, 255, 0.15);
+  --lg-surface-border-focus: rgba(10, 132, 255, 0.8);
+
+  --lg-edge-highlight: inset 0 1px 1px rgba(255, 255, 255, 0.15), 
+                       inset 0 -1px 1px rgba(0, 0, 0, 0.4);
+  
+  --lg-shine: linear-gradient(105deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 40%);
+
+  --lg-text-primary: rgba(255, 255, 255, 0.95);
+  --lg-text-secondary: rgba(255, 255, 255, 0.65);
+  --lg-text-placeholder: rgba(255, 255, 255, 0.35);
+  --lg-text-link: rgba(50, 150, 255, 1);
+
+  --lg-accent: rgba(10, 132, 255, 1);
+
+  --lg-backdrop: var(--lg-blur-strength) var(--lg-saturate);
+
+  --lg-elevation-1: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --lg-elevation-2: 0 10px 32px rgba(0, 0, 0, 0.5);
+  --lg-elevation-3: 0 20px 48px rgba(0, 0, 0, 0.7);
+
+  --lg-focus-ring: 0 0 0 3px rgba(10, 132, 255, 0.4);
+}
+
+/* =========================================================
+   3️⃣ BASE LAYOUT
+   ========================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family:
+    "Google Sans Flex",
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--lg-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================================
+   4️⃣ GLASS SURFACE (CARDS, PANELS)
+   ========================================================= */
+.glass {
+  position: relative;
+  background: var(--lg-surface-bg);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-default);
+  
+  backdrop-filter: var(--lg-backdrop);
+  -webkit-backdrop-filter: var(--lg-backdrop);
+
+  /* Combines shadow with the inner glass reflection edge */
+  box-shadow: var(--lg-elevation-2), var(--lg-edge-highlight);
+
+  transition: all var(--lg-transition);
+  overflow: hidden; /* Contains the shine */
+}
+
+/* Adds a subtle diagonal shine to glass surfaces */
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--lg-shine);
+  border-radius: inherit;
+  opacity: 0.6;
+}
+
+.glass:hover {
+  background: var(--lg-surface-bg-hover);
+  border-color: var(--lg-surface-border-hover);
+  box-shadow: var(--lg-elevation-3), var(--lg-edge-highlight);
+  transform: translateY(-2px); /* Liquid lift effect */
+}
+
+.glass:active {
+  background: var(--lg-surface-bg-active);
+  box-shadow: var(--lg-elevation-1), var(--lg-edge-highlight);
+  transform: translateY(0);
+}
+
+/* =========================================================
+   5️⃣ CONTROLS (INPUTS, BUTTONS)
+   ========================================================= */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  padding: 0.6rem 1rem;
+  background: var(--lg-control-bg);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-sm);
+  color: var(--lg-text-primary);
+  
+  backdrop-filter: var(--lg-backdrop);
+  -webkit-backdrop-filter: var(--lg-backdrop);
+  
+  box-shadow: var(--lg-elevation-1), var(--lg-edge-highlight);
+  transition: all var(--lg-transition);
+}
+
+button {
+  cursor: pointer;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+button:hover,
+input:hover,
+textarea:hover,
+select:hover {
+  background: var(--lg-surface-bg-hover);
+  border-color: var(--lg-surface-border-hover);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+  border-color: var(--lg-surface-border-focus);
+  box-shadow: var(--lg-focus-ring), var(--lg-edge-highlight);
+}
+
+/* =========================================================
+   6️⃣ CHECKBOX / RADIO (LIQUID STYLE)
+   ========================================================= */
+input[type="checkbox"],
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  display: inline-grid;
+  place-content: center;
+  cursor: pointer;
+  margin: 0;
+}
+
+input[type="checkbox"] {
+  border-radius: var(--lg-radius-xs);
+}
+
+input[type="radio"] {
+  border-radius: 50%;
+}
+
+input[type="checkbox"]::before,
+input[type="radio"]::before {
+  content: "";
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(0);
+}
+
+/* Checkmark SVG for Checkboxes */
+input[type="checkbox"]::before {
+  width: 0.8em;
+  height: 0.8em;
+  background-color: white;
+  transform-origin: center;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+/* Dot for Radios */
+input[type="radio"]::before {
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  background: var(--lg-accent);
+  border-color: var(--lg-accent);
+}
+
+input[type="checkbox"]:checked::before,
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+/* =========================================================
+   7️⃣ TEXT ELEMENTS
+   ========================================================= */
+a {
+  color: var(--lg-text-link);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--lg-transition);
+}
+
+a:hover {
+  color: var(--lg-accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+label {
+  color: var(--lg-text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+::placeholder {
+  color: var(--lg-text-placeholder);
+  opacity: 1; /* Firefox fix */
+}
+
+/* =========================================================
+   8️⃣ CUSTOM SCROLLBAR (GLASS THEMED)
+   ========================================================= */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--lg-surface-border);
+  border-radius: 10px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lg-surface-border-hover);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
