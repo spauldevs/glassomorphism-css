@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liquid Glass Preview</title>
+
+  <!-- Link Liquid Glass CSS -->
+  <link rel="stylesheet" href="./liquid.css" />
+
+  <!-- Gradient Background -->
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2, #6dd5ed);
+      background-size: 300% 300%;
+      animation: gradientMove 12s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      width: 90%;
+      max-width: 900px;
+      padding: 40px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      align-items: center;
+    }
+
+    h1, h2 {
+      margin: 0;
+    }
+
+    .spacer {
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container bg-liquid-glass border-liquid-glass">
+
+    <h1>Liquid Glass Design Preview</h1>
+    <p>This page helps you visualize and tweak your system.</p>
+
+    <div class="spacer"></div>
+
+    <h2>Buttons</h2>
+    <div class="row">
+      <button>Primary Button</button>
+      <button disabled>Disabled Button</button>
+      <a href="#">Glass Link</a>
+    </div>
+
+    <div class="spacer"></div>
+
+    <h2>Text Inputs</h2>
+    <div class="row">
+      <input type="text" class="input-text" placeholder="Text input" />
+      <input type="email" class="input-email" placeholder="Email input" />
+      <input type="password" class="input-password" placeholder="Password input" />
+      <input type="number" class="input-number" placeholder="Number input" />
+    </div>
+
+    <div class="spacer"></div>
+
+    <h2>Other Inputs</h2>
+    <div class="row">
+      <input type="date" class="input-date border-liquid-glass" />
+      <input type="color" class="input-color" />
+      <input type="range" class="input-range" />
+      <input type="checkbox" class="input-checkbox" />
+      <input type="radio" class="input-radio" name="demo" />
+      <input type="file" class="input-file" />
+    </div>
+
+    <div class="spacer"></div>
+
+    <h2>Textarea & Select</h2>
+    <div class="row">
+      <textarea rows="3" cols="30" placeholder="Textarea"></textarea>
+      <select>
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <optgroup label="Group">
+          <option>Grouped Option</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <div class="spacer"></div>
+
+    <h2>Progress & Meter</h2>
+    <div class="row">
+      <progress value="60" max="100"></progress>
+      <meter value="0.7"></meter>
+    </div>
+
+    <div class="spacer"></div>
+
+    <h2>Details & Dialog</h2>
+    <details>
+      <summary>Expandable Section</summary>
+      <p>This content is inside a glass details component.</p>
+    </details>
+
+    <div class="spacer"></div>
+
+    <fieldset>
+      <legend>Fieldset</legend>
+      <label>Label Example</label><br />
+      <output>Output Text</output>
+    </fieldset>
+
+  </div>
+
+</body>
+</html>

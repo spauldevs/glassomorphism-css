@@ -1,0 +1,450 @@
+/* Liquid Glass Design System */
+
+/* Light theme design tokens */
+:root {
+  /* Surface background states */
+  --lg-surface-bg: rgba(255, 255, 255, 0.6);
+  --lg-surface-bg-hover: rgba(255, 255, 255, 0.7);
+  --lg-surface-bg-active: rgba(255, 255, 255, 0.8);
+
+  /* Surface border states */
+  --lg-surface-border: rgba(255, 255, 255, 0.4);
+  --lg-surface-border-hover: rgba(255, 255, 255, 0.6);
+  --lg-surface-border-focus: rgba(0, 122, 255, 0.7);
+
+  /* Text colors */
+  --lg-text-primary: rgba(0, 0, 0, 0.85);
+  --lg-text-secondary: rgba(0, 0, 0, 0.6);
+  --lg-text-placeholder: rgba(0, 0, 0, 0.4);
+  --lg-text-link: rgba(0, 122, 255, 0.9);
+
+  /* Glass effect filters */
+  --lg-blur-strength: blur(20px);
+  --lg-saturate: saturate(180%);
+  --lg-backdrop: var(--lg-blur-strength) var(--lg-saturate);
+
+  /* Elevation shadows */
+  --lg-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  --lg-shadow-active: 0 4px 20px rgba(0, 0, 0, 0.2);
+  --lg-focus-ring: 0 0 0 1px var(--lg-surface-border-focus);
+
+  /* Accent color */
+  --lg-accent: rgba(0, 122, 255, 0.9);
+
+  /* Border radius scale */
+  --lg-radius-xs: 6px;
+  --lg-radius-sm: 10px;
+  --lg-radius-md: 16px;
+  --lg-radius-lg: 24px;
+  --lg-radius-xl: 32px;
+  --lg-radius-default: var(--lg-radius-md);
+}
+
+/* Dark theme overrides */
+[data-theme="dark"] {
+  /* Surface background states */
+  --lg-surface-bg: rgba(30, 30, 30, 0.55);
+  --lg-surface-bg-hover: rgba(40, 40, 40, 0.65);
+  --lg-surface-bg-active: rgba(50, 50, 50, 0.75);
+
+  /* Surface border states */
+  --lg-surface-border: rgba(255, 255, 255, 0.1);
+  --lg-surface-border-hover: rgba(255, 255, 255, 0.2);
+  --lg-surface-border-focus: rgba(10, 132, 255, 0.9);
+
+  /* Text colors */
+  --lg-text-primary: rgba(255, 255, 255, 0.9);
+  --lg-text-secondary: rgba(255, 255, 255, 0.6);
+  --lg-text-placeholder: rgba(255, 255, 255, 0.35);
+  --lg-text-link: rgba(10, 132, 255, 0.95);
+
+  /* Elevation shadows */
+  --lg-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --lg-shadow-active: 0 4px 20px rgba(0, 0, 0, 0.8);
+
+  /* Accent color override */
+  --lg-accent: rgba(10, 132, 255, 0.95);
+}
+
+/* Core glass container utility */
+.bg-liquid-glass {
+  background: var(--lg-surface-bg);
+  backdrop-filter: var(--lg-backdrop);
+  -webkit-backdrop-filter: var(--lg-backdrop);
+  box-shadow: var(--lg-shadow);
+  border-radius: var(--lg-radius-default);
+  color: var(--lg-text-primary);
+  transition: background 200ms ease, box-shadow 200ms ease, border 200ms ease;
+}
+
+/* Hover surface state */
+.bg-liquid-glass:hover {
+  background: var(--lg-surface-bg-hover);
+}
+
+/* Active surface state */
+.bg-liquid-glass:active {
+  background: var(--lg-surface-bg-active);
+  box-shadow: var(--lg-shadow-active);
+}
+
+/* Glass border utility */
+.border-liquid-glass {
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-default);
+}
+
+/* Border hover state */
+.border-liquid-glass:hover {
+  border-color: var(--lg-surface-border-hover);
+}
+
+/* Border focus state */
+.border-liquid-glass:focus-within {
+  border-color: var(--lg-surface-border-focus);
+  box-shadow: var(--lg-focus-ring);
+}
+
+/* Text-based input base styles */
+.input-text,
+.input-email,
+.input-password,
+.input-number {
+  background: var(--lg-surface-bg);
+  backdrop-filter: var(--lg-backdrop);
+  -webkit-backdrop-filter: var(--lg-backdrop);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-default);
+  color: var(--lg-text-primary);
+  box-shadow: var(--lg-shadow);
+  transition: all 200ms ease;
+}
+
+/* Placeholder styling */
+.input-text::placeholder,
+.input-email::placeholder,
+.input-password::placeholder,
+.input-number::placeholder {
+  color: var(--lg-text-placeholder);
+}
+
+/* Input hover state */
+.input-text:hover,
+.input-email:hover,
+.input-password:hover,
+.input-number:hover {
+  background: var(--lg-surface-bg-hover);
+  border-color: var(--lg-surface-border-hover);
+}
+
+/* Input focus state */
+.input-text:focus,
+.input-email:focus,
+.input-password:focus,
+.input-number:focus {
+  outline: none;
+  border-color: var(--lg-surface-border-focus);
+  box-shadow: var(--lg-focus-ring);
+}
+
+/* Input active state */
+.input-text:active,
+.input-email:active,
+.input-password:active,
+.input-number:active {
+  background: var(--lg-surface-bg-active);
+}
+
+/* Date input base */
+.input-date {
+  appearance: none;
+  background: var(--lg-surface-bg);
+  color: var(--lg-text-primary);
+}
+
+/* Calendar icon styling */
+.input-date::-webkit-calendar-picker-indicator {
+  filter: drop-shadow(0 0 2px var(--lg-accent));
+  cursor: pointer;
+}
+
+/* Date hover state */
+.input-date:hover {
+  background: var(--lg-surface-bg-hover);
+}
+
+/* Date focus state */
+.input-date:focus {
+  border-color: var(--lg-surface-border-focus);
+  box-shadow: var(--lg-focus-ring);
+}
+
+/* Color input base */
+.input-color {
+  appearance: none;
+  background: var(--lg-surface-bg);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-sm);
+}
+
+/* Color swatch styling */
+.input-color::-webkit-color-swatch {
+  border: none;
+  border-radius: var(--lg-radius-xs);
+}
+
+/* Remove swatch padding */
+.input-color::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+/* Range input base */
+.input-range {
+  appearance: none;
+  background: transparent;
+}
+
+/* Range track styling */
+.input-range::-webkit-slider-runnable-track {
+  background: var(--lg-surface-bg);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-sm);
+  backdrop-filter: var(--lg-backdrop);
+  box-shadow: var(--lg-shadow);
+}
+
+/* Range thumb styling */
+.input-range::-webkit-slider-thumb {
+  appearance: none;
+  background: var(--lg-accent);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-md);
+  box-shadow: var(--lg-shadow);
+  transition: background 200ms ease;
+}
+
+/* Range focus ring */
+.input-range:focus::-webkit-slider-thumb {
+  box-shadow: var(--lg-focus-ring);
+}
+
+/* Checkbox base */
+.input-checkbox {
+  appearance: none;
+  background: var(--lg-surface-bg);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-xs);
+  backdrop-filter: var(--lg-backdrop);
+  box-shadow: var(--lg-shadow);
+  transition: all 200ms ease;
+}
+
+/* Checkbox checked state */
+.input-checkbox:checked {
+  background: var(--lg-accent);
+  border-color: var(--lg-accent);
+}
+
+/* Checkbox focus ring */
+.input-checkbox:focus {
+  box-shadow: var(--lg-focus-ring);
+}
+
+/* Radio base */
+.input-radio {
+  appearance: none;
+  background: var(--lg-surface-bg);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: 50%;
+  backdrop-filter: var(--lg-backdrop);
+  box-shadow: var(--lg-shadow);
+  transition: all 200ms ease;
+}
+
+/* Radio checked state */
+.input-radio:checked {
+  background: var(--lg-accent);
+  border-color: var(--lg-accent);
+}
+
+/* Radio focus ring */
+.input-radio:focus {
+  box-shadow: var(--lg-focus-ring);
+}
+
+/* File input base */
+.input-file {
+  background: transparent;
+  color: var(--lg-text-primary);
+}
+
+/* File button styling */
+.input-file::file-selector-button {
+  background: var(--lg-surface-bg);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-default);
+  backdrop-filter: var(--lg-backdrop);
+  box-shadow: var(--lg-shadow);
+  color: var(--lg-text-primary);
+  transition: all 200ms ease;
+}
+
+/* File button hover */
+.input-file::file-selector-button:hover {
+  background: var(--lg-surface-bg-hover);
+  border-color: var(--lg-surface-border-hover);
+}
+
+/* File button active */
+.input-file::file-selector-button:active {
+  background: var(--lg-surface-bg-active);
+  box-shadow: var(--lg-shadow-active);
+}
+
+/* Textarea base */
+textarea {
+  background: var(--lg-surface-bg);
+  backdrop-filter: var(--lg-backdrop);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-default);
+  color: var(--lg-text-primary);
+  box-shadow: var(--lg-shadow);
+  transition: all 200ms ease;
+}
+
+/* Select base */
+select {
+  background: var(--lg-surface-bg);
+  backdrop-filter: var(--lg-backdrop);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-default);
+  color: var(--lg-text-primary);
+  box-shadow: var(--lg-shadow);
+}
+
+/* Select focus state */
+select:focus {
+  outline: none;
+  border-color: var(--lg-surface-border-focus);
+  box-shadow: var(--lg-focus-ring);
+}
+
+/* Option styling */
+option {
+  background: var(--lg-surface-bg);
+  color: var(--lg-text-primary);
+}
+
+/* Optgroup styling */
+optgroup {
+  color: var(--lg-text-secondary);
+}
+
+/* Button base */
+button {
+  background: var(--lg-surface-bg);
+  backdrop-filter: var(--lg-backdrop);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-default);
+  color: var(--lg-text-primary);
+  box-shadow: var(--lg-shadow);
+  transition: all 200ms ease;
+}
+
+/* Button hover */
+button:hover {
+  background: var(--lg-surface-bg-hover);
+  border-color: var(--lg-surface-border-hover);
+}
+
+/* Button active */
+button:active {
+  background: var(--lg-surface-bg-active);
+  box-shadow: var(--lg-shadow-active);
+}
+
+/* Button focus ring */
+button:focus {
+  outline: none;
+  box-shadow: var(--lg-focus-ring);
+}
+
+/* Fieldset base */
+fieldset {
+  background: var(--lg-surface-bg);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-lg);
+  backdrop-filter: var(--lg-backdrop);
+  box-shadow: var(--lg-shadow);
+}
+
+/* Inline text elements */
+legend {
+  color: var(--lg-text-primary);
+}
+
+label {
+  color: var(--lg-text-secondary);
+}
+
+output {
+  color: var(--lg-accent);
+}
+
+/* Progress and meter base */
+progress,
+meter {
+  background: var(--lg-surface-bg);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-sm);
+  box-shadow: var(--lg-shadow);
+  backdrop-filter: var(--lg-backdrop);
+}
+
+/* Anchor styling */
+a {
+  color: var(--lg-text-link);
+  transition: color 200ms ease;
+}
+
+/* Anchor hover */
+a:hover {
+  color: var(--lg-accent);
+}
+
+/* Details base */
+details {
+  background: var(--lg-surface-bg);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-default);
+  backdrop-filter: var(--lg-backdrop);
+  box-shadow: var(--lg-shadow);
+}
+
+/* Summary text */
+summary {
+  color: var(--lg-text-primary);
+}
+
+/* Dialog base */
+dialog {
+  background: var(--lg-surface-bg);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-lg);
+  backdrop-filter: var(--lg-backdrop);
+  box-shadow: var(--lg-shadow);
+  color: var(--lg-text-primary);
+}
+
+/* Embedded media styling */
+iframe,
+canvas,
+svg,
+audio,
+video {
+  background: var(--lg-surface-bg);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-default);
+  backdrop-filter: var(--lg-backdrop);
+  box-shadow: var(--lg-shadow);
+}
