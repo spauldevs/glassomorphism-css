@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Theme Aware Gradient Glass</title>
+
+<style>
+
+/* ===============================
+   THEME TOKENS
+================================ */
+
+/* Light Theme */
+:root {
+  --bg-gradient:
+    radial-gradient(circle at 20% 30%, #a1c4fd, transparent 50%),
+    radial-gradient(circle at 80% 70%, #c2e9fb, transparent 50%),
+    linear-gradient(135deg, #fdfbfb, #ebedee);
+
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --text-color: #111;
+}
+
+/* Dark Theme (Forced) */
+[data-theme="dark"] {
+  --bg-gradient:
+    radial-gradient(circle at 20% 30%, #1e3c72, transparent 50%),
+    radial-gradient(circle at 80% 70%, #2a5298, transparent 50%),
+    linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+
+  --glass-bg: rgba(0, 0, 0, 0.35);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --text-color: #ffffff;
+}
+
+/* Auto Mode - System Preference */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-gradient:
+      radial-gradient(circle at 20% 30%, #1e3c72, transparent 50%),
+      radial-gradient(circle at 80% 70%, #2a5298, transparent 50%),
+      linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+
+    --glass-bg: rgba(0, 0, 0, 0.35);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --text-color: #ffffff;
+  }
+}
+
+/* ===============================
+   BASE STYLES
+================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 200vh; /* Enable scroll */
+  font-family: system-ui, -apple-system, sans-serif;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+/* Fixed Gradient Background Layer */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: var(--bg-gradient);
+  z-index: -1;
+  transition: background 0.4s ease;
+}
+
+/* ===============================
+   GLASS CARD
+================================ */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.glass {
+  color: var(--text-color);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 420px;
+  text-align: center;
+  transition: background 0.3s ease, border 0.3s ease;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* ===============================
+   THEME BUTTONS
+================================ */
+
+.theme-switcher {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="theme-switcher">
+  <button class="glass" onclick="setTheme('auto')">Auto</button>
+  <button class="glass" onclick="setTheme('light')">Light</button>
+  <button onclick="setTheme('dark')">Dark</button>
+</div>
+
+<div class="container">
+  <div class="glass">
+    <h1>Theme Aware Gradient</h1>
+    <p>Scroll the page — background stays fixed.</p>
+    <p>Switch between Auto, Light and Dark modes.</p>
+  </div>
+</div>
+
+<script>
+function setTheme(mode) {
+  if (mode === "auto") {
+    document.documentElement.removeAttribute("data-theme");
+  } else {
+    document.documentElement.setAttribute("data-theme", mode);
+  }
+}
+</script>
+
+</body>
+</html>
