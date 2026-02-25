@@ -1,0 +1,350 @@
+/* =========================================================
+   APPLE LIQUID GLASS DESIGN SYSTEM
+   Fully Token Driven
+   No Size Properties
+   ========================================================= */
+
+
+/* =========================================================
+   1️⃣ LIGHT THEME TOKENS
+   ========================================================= */
+
+:root {
+
+  /* -------------------------
+     SURFACE
+     ------------------------- */
+
+  --lg-surface-bg: rgba(255, 255, 255, 0.6);
+  --lg-surface-bg-hover: rgba(255, 255, 255, 0.7);
+  --lg-surface-bg-active: rgba(255, 255, 255, 0.8);
+
+  --lg-surface-border: rgba(255, 255, 255, 0.4);
+  --lg-surface-border-hover: rgba(255, 255, 255, 0.6);
+  --lg-surface-border-focus: rgba(0, 122, 255, 0.7);
+
+  /* -------------------------
+     TEXT
+     ------------------------- */
+
+  --lg-text-primary: rgba(0, 0, 0, 0.85);
+  --lg-text-secondary: rgba(0, 0, 0, 0.6);
+  --lg-text-placeholder: rgba(0, 0, 0, 0.4);
+  --lg-text-link: rgba(0, 122, 255, 0.9);
+
+  /* -------------------------
+     EFFECTS
+     ------------------------- */
+
+  --lg-blur-strength: blur(20px);
+  --lg-saturate: saturate(180%);
+  --lg-backdrop: var(--lg-blur-strength) var(--lg-saturate);
+
+  --lg-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  --lg-shadow-active: 0 4px 20px rgba(0, 0, 0, 0.2);
+  --lg-focus-ring: 0 0 0 1px var(--lg-surface-border-focus);
+
+  /* -------------------------
+     ACCENT
+     ------------------------- */
+
+  --lg-accent: rgba(0, 122, 255, 0.9);
+
+  /* -------------------------
+     ROUNDED CORNERS
+     ------------------------- */
+
+  --lg-radius-xs: 6px;
+  --lg-radius-sm: 10px;
+  --lg-radius-md: 16px;
+  --lg-radius-lg: 24px;
+  --lg-radius-xl: 32px;
+
+  --lg-radius-default: var(--lg-radius-md);
+}
+
+
+/* =========================================================
+   2️⃣ DARK THEME TOKENS
+   ========================================================= */
+
+[data-theme="dark"] {
+
+  --lg-surface-bg: rgba(30, 30, 30, 0.55);
+  --lg-surface-bg-hover: rgba(40, 40, 40, 0.65);
+  --lg-surface-bg-active: rgba(50, 50, 50, 0.75);
+
+  --lg-surface-border: rgba(255, 255, 255, 0.1);
+  --lg-surface-border-hover: rgba(255, 255, 255, 0.2);
+  --lg-surface-border-focus: rgba(10, 132, 255, 0.9);
+
+  --lg-text-primary: rgba(255, 255, 255, 0.9);
+  --lg-text-secondary: rgba(255, 255, 255, 0.6);
+  --lg-text-placeholder: rgba(255, 255, 255, 0.35);
+  --lg-text-link: rgba(10, 132, 255, 0.95);
+
+  --lg-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --lg-shadow-active: 0 4px 20px rgba(0, 0, 0, 0.8);
+
+  --lg-accent: rgba(10, 132, 255, 0.95);
+}
+
+
+/* =========================================================
+   3️⃣ CORE LIQUID GLASS UTILITIES
+   ========================================================= */
+
+.bg-liquid-glass {
+  background: var(--lg-surface-bg);
+  backdrop-filter: var(--lg-backdrop);
+  -webkit-backdrop-filter: var(--lg-backdrop);
+  box-shadow: var(--lg-shadow);
+  border-radius: var(--lg-radius-default);
+  color: var(--lg-text-primary);
+  transition: background 200ms ease, box-shadow 200ms ease, border 200ms ease;
+}
+
+.bg-liquid-glass:hover {
+  background: var(--lg-surface-bg-hover);
+}
+
+.bg-liquid-glass:active {
+  background: var(--lg-surface-bg-active);
+  box-shadow: var(--lg-shadow-active);
+}
+
+.border-liquid-glass {
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-default);
+}
+
+.border-liquid-glass:hover {
+  border-color: var(--lg-surface-border-hover);
+}
+
+.border-liquid-glass:focus-within {
+  border-color: var(--lg-surface-border-focus);
+  box-shadow: var(--lg-focus-ring);
+}
+
+
+/* =========================================================
+   4️⃣ INPUTS
+   ========================================================= */
+
+input {
+  background: var(--lg-surface-bg);
+  backdrop-filter: var(--lg-backdrop);
+  -webkit-backdrop-filter: var(--lg-backdrop);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-default);
+  color: var(--lg-text-primary);
+  box-shadow: var(--lg-shadow);
+  transition: all 200ms ease;
+}
+
+input::placeholder {
+  color: var(--lg-text-placeholder);
+}
+
+input:hover {
+  background: var(--lg-surface-bg-hover);
+  border-color: var(--lg-surface-border-hover);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--lg-surface-border-focus);
+  box-shadow: var(--lg-focus-ring);
+}
+
+input:active {
+  background: var(--lg-surface-bg-active);
+}
+
+
+
+/* =========================================================
+   5️⃣ TEXTAREA
+   ========================================================= */
+
+textarea {
+  background: var(--lg-surface-bg);
+  backdrop-filter: var(--lg-backdrop);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-default);
+  color: var(--lg-text-primary);
+  box-shadow: var(--lg-shadow);
+  transition: all 200ms ease;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--lg-surface-border-focus);
+  box-shadow: var(--lg-focus-ring);
+}
+
+
+/* =========================================================
+   6️⃣ SELECT / OPTION / OPTGROUP
+   ========================================================= */
+
+select {
+  background: var(--lg-surface-bg);
+  backdrop-filter: var(--lg-backdrop);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-default);
+  color: var(--lg-text-primary);
+  box-shadow: var(--lg-shadow);
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--lg-surface-border-focus);
+  box-shadow: var(--lg-focus-ring);
+}
+
+option {
+  background: var(--lg-surface-bg);
+  color: var(--lg-text-primary);
+}
+
+.option-with-group {
+  background: var(--lg-surface-bg-hover);
+  color: var(--lg-text-primary);
+}
+
+optgroup {
+  color: var(--lg-text-secondary);
+}
+
+
+/* =========================================================
+   7️⃣ BUTTON
+   ========================================================= */
+
+button {
+  background: var(--lg-surface-bg);
+  backdrop-filter: var(--lg-backdrop);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-default);
+  color: var(--lg-text-primary);
+  box-shadow: var(--lg-shadow);
+  transition: all 200ms ease;
+}
+
+button:hover {
+  background: var(--lg-surface-bg-hover);
+  border-color: var(--lg-surface-border-hover);
+}
+
+button:active {
+  background: var(--lg-surface-bg-active);
+  box-shadow: var(--lg-shadow-active);
+}
+
+button:focus {
+  outline: none;
+  box-shadow: var(--lg-focus-ring);
+}
+
+
+/* =========================================================
+   8️⃣ FIELDSET / LEGEND / LABEL / OUTPUT
+   ========================================================= */
+
+fieldset {
+  background: var(--lg-surface-bg);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-lg);
+  backdrop-filter: var(--lg-backdrop);
+  box-shadow: var(--lg-shadow);
+}
+
+legend {
+  color: var(--lg-text-primary);
+}
+
+label {
+  color: var(--lg-text-secondary);
+}
+
+output {
+  color: var(--lg-accent);
+}
+
+
+/* =========================================================
+   9️⃣ PROGRESS / METER
+   ========================================================= */
+
+progress,
+meter {
+  background: var(--lg-surface-bg);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-sm);
+  box-shadow: var(--lg-shadow);
+  backdrop-filter: var(--lg-backdrop);
+}
+
+
+/* =========================================================
+   🔟 ANCHOR
+   ========================================================= */
+
+a {
+  color: var(--lg-text-link);
+  transition: color 200ms ease;
+}
+
+a:hover {
+  color: var(--lg-accent);
+}
+
+
+/* =========================================================
+   1️⃣1️⃣ DETAILS / SUMMARY
+   ========================================================= */
+
+details {
+  background: var(--lg-surface-bg);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-default);
+  backdrop-filter: var(--lg-backdrop);
+  box-shadow: var(--lg-shadow);
+}
+
+summary {
+  color: var(--lg-text-primary);
+}
+
+
+/* =========================================================
+   1️⃣2️⃣ DIALOG
+   ========================================================= */
+
+dialog {
+  background: var(--lg-surface-bg);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-lg);
+  backdrop-filter: var(--lg-backdrop);
+  box-shadow: var(--lg-shadow);
+  color: var(--lg-text-primary);
+}
+
+
+/* =========================================================
+   1️⃣3️⃣ MEDIA ELEMENTS
+   ========================================================= */
+
+iframe,
+canvas,
+svg,
+audio,
+video {
+  background: var(--lg-surface-bg);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-default);
+  backdrop-filter: var(--lg-backdrop);
+  box-shadow: var(--lg-shadow);
+}

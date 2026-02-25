@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+now build a css custom code template for all of the elements in the html given below. First go through the propmt, then analyze the html, then proceed as per the instruction i given.
+1. generated style via css does not hold any size properties like padding, width, height, margin, etc.
+2. the style - Apple liquid glass
+3. the tokens - a. Light theme tokens & b. Dark theme tokens for liquid glass
+4. all classes must use the tokens for colors, blur and backdrop filters and other required tokens. no manual hard-coded colors to be used in the classes,
+5. build these mandatory classees - bg-liquid-glass, border-liquid-glass
+6. generated css classs names - a. where type applicable "use base element name" - "type", that is, for input type="text"  -> class name will be - input-text etc.
+b. for option - we will create two class - option and option-with-group;
+c. for others use element name only
+7. Add hover/focus/active tokens to the applicable classess
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HTML Interactive Elements Preview</title>
-  <link rel="stylesheet" href="liquid-glass.css">
-
-</head>
-
-<body>
-
-  <h1>Interactive Elements Visual Preview</h1>
-
-  <!-- INPUT -->
+The html:   <!-- INPUT -->
   <section>
     <h2>Input Types</h2>
 
@@ -190,7 +186,3 @@ Select with option Group
       <track src="https://www.w3schools.com/html/mov_bbb.vtt" kind="subtitles" srclang="en" label="English">
     </video>
   </section>
-
-</body>
-
-</html>
