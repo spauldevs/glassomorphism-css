@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HTML Interactive Elements Preview</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 30px;
+    line-height: 1.6;
+  }
+
+  section {
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  h2 {
+    margin-top: 0;
+  }
+
+  .block {
+    margin-bottom: 15px;
+  }
+
+  iframe {
+    width: 300px;
+    height: 120px;
+    border: 1px solid #999;
+  }
+
+  canvas {
+    border: 1px solid black;
+  }
+
+  svg {
+    border: 1px solid black;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>Interactive Elements Visual Preview</h1>
+
+<!-- INPUT -->
+<section>
+<h2>Input Types</h2>
+
+<div class="block"><input type="text" placeholder="text input" /></div>
+<div class="block"><input type="email" placeholder="email input" /></div>
+<div class="block"><input type="password" placeholder="password input" /></div>
+<div class="block"><input type="number" placeholder="number input" /></div>
+<div class="block"><input type="date" /></div>
+<div class="block"><input type="color" /></div>
+<div class="block"><input type="range" /></div>
+<div class="block"><input type="checkbox" /> Checkbox</div>
+<div class="block"><input type="radio" name="radio" /> Radio</div>
+<div class="block"><input type="file" /></div>
+<div class="block"><input type="submit" value="Submit Button" /></div>
+<div class="block"><input type="reset" value="Reset Button" /></div>
+<div class="block"><input type="button" value="Generic Button" /></div>
+
+</section>
+
+<!-- TEXTAREA -->
+<section>
+<h2>Textarea</h2>
+<textarea rows="4" cols="40" placeholder="Textarea input"></textarea>
+</section>
+
+<!-- SELECT -->
+<section>
+<h2>Select / Option / Optgroup</h2>
+<select>
+  <optgroup label="Group 1">
+    <option>Option 1</option>
+    <option>Option 2</option>
+  </optgroup>
+  <optgroup label="Group 2">
+    <option>Option 3</option>
+    <option>Option 4</option>
+  </optgroup>
+</select>
+</section>
+
+<!-- BUTTON -->
+<section>
+<h2>Button</h2>
+<button type="button">Normal Button</button>
+<button type="submit">Submit Button</button>
+<button type="reset">Reset Button</button>
+</section>
+
+<!-- LABEL / FIELDSET / LEGEND / OUTPUT -->
+<section>
+<h2>Form Group Elements</h2>
+<form oninput="result.value=parseInt(a.value)+parseInt(b.value)">
+  <fieldset>
+    <legend>Calculation</legend>
+    <label>Value A:
+      <input type="number" id="a" value="5">
+    </label>
+    <br><br>
+    <label>Value B:
+      <input type="number" id="b" value="5">
+    </label>
+    <br><br>
+    Result: <output name="result" for="a b">10</output>
+  </fieldset>
+</form>
+</section>
+
+<!-- DATALIST -->
+<section>
+<h2>Datalist</h2>
+<input list="browsers" placeholder="Choose browser">
+<datalist id="browsers">
+  <option value="Chrome">
+  <option value="Firefox">
+  <option value="Edge">
+</datalist>
+</section>
+
+<!-- PROGRESS / METER -->
+<section>
+<h2>Progress & Meter</h2>
+<progress value="70" max="100"></progress>
+<br><br>
+<meter value="0.6">60%</meter>
+</section>
+
+<!-- LINK -->
+<section>
+<h2>Anchor</h2>
+<a href="https://example.com" target="_blank">Visit Example</a>
+</section>
+
+<!-- DETAILS / SUMMARY -->
+<section>
+<h2>Details / Summary</h2>
+<details>
+  <summary>Click to expand</summary>
+  Hidden content inside details element.
+</details>
+</section>
+
+<!-- DIALOG -->
+<section>
+<h2>Dialog</h2>
+<button onclick="myDialog.showModal()">Open Dialog</button>
+<dialog id="myDialog">
+  <p>This is a dialog element.</p>
+  <button onclick="myDialog.close()">Close</button>
+</dialog>
+</section>
+
+<!-- MAP / AREA -->
+<section>
+<h2>Image Map</h2>
+<img src="https://via.placeholder.com/300x150"
+     usemap="#examplemap"
+     alt="Placeholder">
+
+<map name="examplemap">
+  <area shape="rect" coords="0,0,150,150"
+        href="https://example.com"
+        alt="Left Area">
+  <area shape="rect" coords="150,0,300,150"
+        href="https://google.com"
+        alt="Right Area">
+</map>
+</section>
+
+<!-- IFRAME -->
+<section>
+<h2>Iframe</h2>
+<iframe src="https://example.com"></iframe>
+</section>
+
+<!-- CANVAS -->
+<section>
+<h2>Canvas</h2>
+<canvas id="myCanvas" width="200" height="100"></canvas>
+<script>
+  const canvas = document.getElementById("myCanvas");
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "blue";
+  ctx.fillRect(20, 20, 150, 60);
+</script>
+</section>
+
+<!-- SVG -->
+<section>
+<h2>SVG</h2>
+<svg width="200" height="100">
+  <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+</svg>
+</section>
+
+<!-- AUDIO -->
+<section>
+<h2>Audio</h2>
+<audio controls>
+  <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+</audio>
+</section>
+
+<!-- VIDEO -->
+<section>
+<h2>Video</h2>
+<video width="320" controls>
+  <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+  <track src="https://www.w3schools.com/html/mov_bbb.vtt"
+         kind="subtitles"
+         srclang="en"
+         label="English">
+</video>
+</section>
+
+</body>
+</html>
