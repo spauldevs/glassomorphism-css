@@ -1,7 +1,20 @@
-/* Apple Liquid Glass Design System */
+/* =========================================================
+   APPLE LIQUID GLASS DESIGN SYSTEM
+   Fully Token Driven
+   No Size Properties
+   ========================================================= */
 
-/* Light theme tokens */
+
+/* =========================================================
+   1️⃣ LIGHT THEME TOKENS
+   ========================================================= */
+
 :root {
+
+  /* -------------------------
+     SURFACE
+     ------------------------- */
+
   --lg-surface-bg: rgba(255, 255, 255, 0.6);
   --lg-surface-bg-hover: rgba(255, 255, 255, 0.7);
   --lg-surface-bg-active: rgba(255, 255, 255, 0.8);
@@ -10,10 +23,18 @@
   --lg-surface-border-hover: rgba(255, 255, 255, 0.6);
   --lg-surface-border-focus: rgba(0, 122, 255, 0.7);
 
+  /* -------------------------
+     TEXT
+     ------------------------- */
+
   --lg-text-primary: rgba(0, 0, 0, 0.85);
   --lg-text-secondary: rgba(0, 0, 0, 0.6);
   --lg-text-placeholder: rgba(0, 0, 0, 0.4);
   --lg-text-link: rgba(0, 122, 255, 0.9);
+
+  /* -------------------------
+     EFFECTS
+     ------------------------- */
 
   --lg-blur-strength: blur(20px);
   --lg-saturate: saturate(180%);
@@ -23,18 +44,32 @@
   --lg-shadow-active: 0 4px 20px rgba(0, 0, 0, 0.2);
   --lg-focus-ring: 0 0 0 1px var(--lg-surface-border-focus);
 
+  /* -------------------------
+     ACCENT
+     ------------------------- */
+
   --lg-accent: rgba(0, 122, 255, 0.9);
+
+  /* -------------------------
+     ROUNDED CORNERS
+     ------------------------- */
 
   --lg-radius-xs: 6px;
   --lg-radius-sm: 10px;
   --lg-radius-md: 16px;
   --lg-radius-lg: 24px;
   --lg-radius-xl: 32px;
+
   --lg-radius-default: var(--lg-radius-md);
 }
 
-/* Dark theme tokens */
+
+/* =========================================================
+   2️⃣ DARK THEME TOKENS
+   ========================================================= */
+
 [data-theme="dark"] {
+
   --lg-surface-bg: rgba(30, 30, 30, 0.55);
   --lg-surface-bg-hover: rgba(40, 40, 40, 0.65);
   --lg-surface-bg-active: rgba(50, 50, 50, 0.75);
@@ -54,7 +89,11 @@
   --lg-accent: rgba(10, 132, 255, 0.95);
 }
 
-/* Core glass utilities */
+
+/* =========================================================
+   3️⃣ CORE LIQUID GLASS UTILITIES
+   ========================================================= */
+
 .bg-liquid-glass {
   background: var(--lg-surface-bg);
   backdrop-filter: var(--lg-backdrop);
@@ -88,11 +127,12 @@
   box-shadow: var(--lg-focus-ring);
 }
 
-/* Text inputs */
-.input-text,
-.input-email,
-.input-password,
-.input-number {
+
+/* =========================================================
+   4️⃣ INPUTS
+   ========================================================= */
+
+input {
   background: var(--lg-surface-bg);
   backdrop-filter: var(--lg-backdrop);
   -webkit-backdrop-filter: var(--lg-backdrop);
@@ -103,180 +143,52 @@
   transition: all 200ms ease;
 }
 
-.input-text::placeholder,
-.input-email::placeholder,
-.input-password::placeholder,
-.input-number::placeholder {
+input::placeholder {
   color: var(--lg-text-placeholder);
 }
 
-.input-text:hover,
-.input-email:hover,
-.input-password:hover,
-.input-number:hover {
+input:hover {
   background: var(--lg-surface-bg-hover);
   border-color: var(--lg-surface-border-hover);
 }
 
-.input-text:focus,
-.input-email:focus,
-.input-password:focus,
-.input-number:focus {
+input:focus {
   outline: none;
   border-color: var(--lg-surface-border-focus);
   box-shadow: var(--lg-focus-ring);
 }
 
-.input-text:active,
-.input-email:active,
-.input-password:active,
-.input-number:active {
+input:active {
   background: var(--lg-surface-bg-active);
 }
 
-/* Date input */
-.input-date {
-  appearance: none;
+
+
+/* =========================================================
+   5️⃣ TEXTAREA
+   ========================================================= */
+
+textarea {
   background: var(--lg-surface-bg);
+  backdrop-filter: var(--lg-backdrop);
+  border: 1px solid var(--lg-surface-border);
+  border-radius: var(--lg-radius-default);
   color: var(--lg-text-primary);
+  box-shadow: var(--lg-shadow);
+  transition: all 200ms ease;
 }
 
-.input-date::-webkit-calendar-picker-indicator {
-  filter: drop-shadow(0 0 2px var(--lg-accent));
-  cursor: pointer;
-}
-
-.input-date:hover {
-  background: var(--lg-surface-bg-hover);
-}
-
-.input-date:focus {
+textarea:focus {
+  outline: none;
   border-color: var(--lg-surface-border-focus);
   box-shadow: var(--lg-focus-ring);
 }
 
-/* Color input */
-.input-color {
-  appearance: none;
-  background: var(--lg-surface-bg);
-  border: 1px solid var(--lg-surface-border);
-  border-radius: var(--lg-radius-sm);
-}
 
-.input-color::-webkit-color-swatch {
-  border: none;
-  border-radius: var(--lg-radius-xs);
-}
+/* =========================================================
+   6️⃣ SELECT / OPTION / OPTGROUP
+   ========================================================= */
 
-.input-color::-webkit-color-swatch-wrapper {
-  padding: 0;
-}
-
-/* Range input */
-.input-range {
-  appearance: none;
-  background: transparent;
-}
-
-.input-range::-webkit-slider-runnable-track {
-  background: var(--lg-surface-bg);
-  border: 1px solid var(--lg-surface-border);
-  border-radius: var(--lg-radius-sm);
-  backdrop-filter: var(--lg-backdrop);
-  box-shadow: var(--lg-shadow);
-}
-
-.input-range::-webkit-slider-thumb {
-  appearance: none;
-  background: var(--lg-accent);
-  border: 1px solid var(--lg-surface-border);
-  border-radius: var(--lg-radius-md);
-  box-shadow: var(--lg-shadow);
-  transition: background 200ms ease;
-}
-
-.input-range:focus::-webkit-slider-thumb {
-  box-shadow: var(--lg-focus-ring);
-}
-
-/* Checkbox */
-.input-checkbox {
-  appearance: none;
-  background: var(--lg-surface-bg);
-  border: 1px solid var(--lg-surface-border);
-  border-radius: var(--lg-radius-xs);
-  backdrop-filter: var(--lg-backdrop);
-  box-shadow: var(--lg-shadow);
-  transition: all 200ms ease;
-}
-
-.input-checkbox:checked {
-  background: var(--lg-accent);
-  border-color: var(--lg-accent);
-}
-
-.input-checkbox:focus {
-  box-shadow: var(--lg-focus-ring);
-}
-
-/* Radio */
-.input-radio {
-  appearance: none;
-  background: var(--lg-surface-bg);
-  border: 1px solid var(--lg-surface-border);
-  border-radius: 50%;
-  backdrop-filter: var(--lg-backdrop);
-  box-shadow: var(--lg-shadow);
-  transition: all 200ms ease;
-}
-
-.input-radio:checked {
-  background: var(--lg-accent);
-  border-color: var(--lg-accent);
-}
-
-.input-radio:focus {
-  box-shadow: var(--lg-focus-ring);
-}
-
-/* File input */
-.input-file {
-  background: transparent;
-  color: var(--lg-text-primary);
-}
-
-.input-file::file-selector-button {
-  background: var(--lg-surface-bg);
-  border: 1px solid var(--lg-surface-border);
-  border-radius: var(--lg-radius-default);
-  backdrop-filter: var(--lg-backdrop);
-  box-shadow: var(--lg-shadow);
-  color: var(--lg-text-primary);
-  transition: all 200ms ease;
-}
-
-.input-file::file-selector-button:hover {
-  background: var(--lg-surface-bg-hover);
-  border-color: var(--lg-surface-border-hover);
-}
-
-.input-file::file-selector-button:active {
-  background: var(--lg-surface-bg-active);
-  box-shadow: var(--lg-shadow-active);
-}
-
-/* Textarea */
-.textarea {
-  background: var(--lg-surface-bg);
-  backdrop-filter: var(--lg-backdrop);
-  border: 1px solid var(--lg-surface-border);
-  border-radius: var(--lg-radius-default);
-  color: var(--lg-text-primary);
-  box-shadow: var(--lg-shadow);
-  transition: all 200ms ease;
-}
-
-/* Select */
 select {
   background: var(--lg-surface-bg);
   backdrop-filter: var(--lg-backdrop);
@@ -297,11 +209,20 @@ option {
   color: var(--lg-text-primary);
 }
 
+.option-with-group {
+  background: var(--lg-surface-bg-hover);
+  color: var(--lg-text-primary);
+}
+
 optgroup {
   color: var(--lg-text-secondary);
 }
 
-/* Button */
+
+/* =========================================================
+   7️⃣ BUTTON
+   ========================================================= */
+
 button {
   background: var(--lg-surface-bg);
   backdrop-filter: var(--lg-backdrop);
@@ -327,7 +248,11 @@ button:focus {
   box-shadow: var(--lg-focus-ring);
 }
 
-/* Fieldset */
+
+/* =========================================================
+   8️⃣ FIELDSET / LEGEND / LABEL / OUTPUT
+   ========================================================= */
+
 fieldset {
   background: var(--lg-surface-bg);
   border: 1px solid var(--lg-surface-border);
@@ -336,11 +261,23 @@ fieldset {
   box-shadow: var(--lg-shadow);
 }
 
-legend { color: var(--lg-text-primary); }
-label { color: var(--lg-text-secondary); }
-output { color: var(--lg-accent); }
+legend {
+  color: var(--lg-text-primary);
+}
 
-/* Progress */
+label {
+  color: var(--lg-text-secondary);
+}
+
+output {
+  color: var(--lg-accent);
+}
+
+
+/* =========================================================
+   9️⃣ PROGRESS / METER
+   ========================================================= */
+
 progress,
 meter {
   background: var(--lg-surface-bg);
@@ -350,15 +287,25 @@ meter {
   backdrop-filter: var(--lg-backdrop);
 }
 
-/* Anchor */
+
+/* =========================================================
+   🔟 ANCHOR
+   ========================================================= */
+
 a {
   color: var(--lg-text-link);
   transition: color 200ms ease;
 }
 
-a:hover { color: var(--lg-accent); }
+a:hover {
+  color: var(--lg-accent);
+}
 
-/* Details */
+
+/* =========================================================
+   1️⃣1️⃣ DETAILS / SUMMARY
+   ========================================================= */
+
 details {
   background: var(--lg-surface-bg);
   border: 1px solid var(--lg-surface-border);
@@ -367,9 +314,15 @@ details {
   box-shadow: var(--lg-shadow);
 }
 
-summary { color: var(--lg-text-primary); }
+summary {
+  color: var(--lg-text-primary);
+}
 
-/* Dialog */
+
+/* =========================================================
+   1️⃣2️⃣ DIALOG
+   ========================================================= */
+
 dialog {
   background: var(--lg-surface-bg);
   border: 1px solid var(--lg-surface-border);
@@ -379,7 +332,11 @@ dialog {
   color: var(--lg-text-primary);
 }
 
-/* Media */
+
+/* =========================================================
+   1️⃣3️⃣ MEDIA ELEMENTS
+   ========================================================= */
+
 iframe,
 canvas,
 svg,
